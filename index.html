@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -1517,139 +1516,6 @@
     }
 
     // CONTACT: send via EmailJS instead of opening Gmail
-    const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY_HERE';  // <-- put your Public Key here
-    const EMAILJS_SERVICE_ID  = 'service_ntqer3d';
-    const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID_HERE'; // <-- put your Template ID here
-
-    emailjs.init(EMAILJS_PUBLIC_KEY);
-
-    function handleContact(e) {
-      e.preventDefault();
-
-      const name    = document.getElementById('contact-name').value.trim();
-      const email   = document.getElementById('contact-email').value.trim();
-      const subject = document.getElementById('contact-subject').value.trim() || 'New project request';
-      const message = document.getElementById('contact-message').value.trim();
-
-      const params = {
-        name:   name,
-        title:  subject,
-        email:  email,
-        message: message,
-      };
-
-      emailjs
-        .send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params)
-        .then(function () {
-          alert('Thank you! Your message has been sent.');
-          document.getElementById('contact-form').reset();
-        })
-        .catch(function (error) {
-          console.error('EmailJS error:', error);
-          alert('Sorry, something went wrong. Please use WhatsApp or email directly.');
-        });
-    }
-
-    // YEAR
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // JOURNEY / GAME-LIKE NAVIGATION
-    (function () {
-      const steps = document.querySelectorAll('.journey-step');
-      const cards = document.querySelectorAll('#projects .gig-card');
-      if (!steps.length || !cards.length) return;
-
-      let currentIndex = 0;
-
-      function setActive(index) {
-        cards.forEach((card, i) => {
-          card.classList.toggle('active', i === index);
-        });
-        steps.forEach((step, i) => {
-          step.classList.toggle('active', i === index);
-        });
-        currentIndex = index;
-      }
-
-      setActive(0);
-
-      steps.forEach((step, idx) => {
-        step.addEventListener('click', () => {
-          const level = parseInt(step.dataset.level || idx, 10) || 0;
-          const safeIndex = Math.min(Math.max(level, 0), cards.length - 1);
-          setActive(safeIndex);
-        });
-      });
-
-      window.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-          let next = currentIndex + (e.key === 'ArrowRight' ? 1 : -1);
-          if (next < 0) next = cards.length - 1;
-          if (next >= cards.length) next = 0;
-          setActive(next);
-        }
-      });
-    })();
-  </script>
-</body>
-</html>
-  <!-- EmailJS library -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
-  <script>
-    // THEME TOGGLE (LIGHT / DARK)
-    const body = document.body;
-    const themeToggle = document.getElementById('themeToggle');
-    const storedTheme = window.localStorage.getItem('baba-theme');
-    if (storedTheme === 'light') {
-      body.classList.add('light-theme');
-      if (themeToggle) themeToggle.textContent = '☀️ Light';
-    }
-
-    if (themeToggle) {
-      themeToggle.addEventListener('click', () => {
-        const isLight = body.classList.toggle('light-theme');
-        themeToggle.textContent = isLight ? '☀️ Light' : '🌙 Dark';
-        window.localStorage.setItem('baba-theme', isLight ? 'light' : 'dark');
-      });
-    }
-
-    // INTERACTIVE CURSOR GLOW
-    const glow = document.querySelector('.cursor-glow');
-    window.addEventListener('mousemove', (e) => {
-      const x = e.clientX - 110;
-      const y = e.clientY - 110;
-      glow.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-      glow.style.opacity = 1;
-    });
-    window.addEventListener('mouseleave', () => {
-      glow.style.opacity = 0;
-    });
-
-    // SCROLL REVEAL
-    function handleReveal() {
-      const elements = document.querySelectorAll('.reveal');
-      const trigger = window.innerHeight * 0.85;
-      elements.forEach((el) => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < trigger) {
-          el.classList.add('visible');
-        }
-      });
-    }
-    window.addEventListener('scroll', handleReveal);
-    window.addEventListener('load', handleReveal);
-
-    // FLOATING CONTACT CLOSE
-    const floatingContact = document.getElementById('floatingContact');
-    const closeContact = document.getElementById('closeContact');
-    if (closeContact && floatingContact) {
-      closeContact.addEventListener('click', () => {
-        floatingContact.style.display = 'none';
-      });
-    }
-
-    // CONTACT: send via EmailJS instead of opening Gmail
     const EMAILJS_PUBLIC_KEY  = '2NrCcY15HSSr9e2Hz';
     const EMAILJS_SERVICE_ID  = 'service_ntqer3d';
     const EMAILJS_TEMPLATE_ID = 'template_36mopoc';
@@ -1704,10 +1570,8 @@
         currentIndex = index;
       }
 
-      // initial state
       setActive(0);
 
-      // click on a level button
       steps.forEach((step, idx) => {
         step.addEventListener('click', () => {
           const level = parseInt(step.dataset.level || idx, 10) || 0;
@@ -1716,7 +1580,6 @@
         });
       });
 
-      // keyboard support (left/right arrows)
       window.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
           let next = currentIndex + (e.key === 'ArrowRight' ? 1 : -1);
@@ -1729,4 +1592,5 @@
   </script>
 </body>
 </html>
+l>
 
